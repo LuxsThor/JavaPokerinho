@@ -66,5 +66,7 @@ public class Card {
         int cardvalue = testcardscan.nextInt();
         Card testcard = new Card(cardsuit, cardvalue);
         System.out.println(testcard.getName() + " should have the values " + cardsuit + " and " + cardvalue);
+        Card shittycard = new Card(1,2);
+        System.out.println("this is a shitty card " + shittycard.getName());
     }
 }
