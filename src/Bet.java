@@ -26,7 +26,6 @@ public class Bet {
 
     //some testing action
     public static void main(String[] args) {
-        Scanner testinput = new Scanner(System.in);
         Bet testbet = new Bet();
         System.out.println("the testbet value is "+ testbet.getBet());
         testbet.setBet(5);
