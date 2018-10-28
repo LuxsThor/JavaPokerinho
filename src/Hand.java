@@ -74,24 +74,76 @@ public class Hand {
         else return false;
     }
 
+    private boolean straightflush(){
+        boolean samesuit = false;
+        boolean street = false;
 
-    // stubs
-    private boolean straightFlush()
-    { return false; }
-    private boolean fourOfAKind()
-    { return false; }
-    private boolean fullHouse()
-    { return false; }
-    private boolean flush()
-    { return false; }
-    private boolean straight()
-    { return false; }
-    private boolean threeOfAKind()
-    { return false; }
-    private boolean twoPair()
-    { return false; }
-    private boolean pair()
-    { return false; }
+        for(int i = 1; i<5; i++){
+            if(suits[i] == 5) samesuit = true;
+        }
+
+        street = hand[1].getValue() == hand[2].getValue() + 1 && hand[1].getValue() == hand[3].getValue() + 2
+                    && hand[1].getValue() == hand[4].getValue() + 4 && hand[1].getValue() == hand[5].getValue() + 4;
+        return samesuit && street;
+    }
+
+    private boolean flush(){
+        boolean samesuit = false;
+        for(int i = 1; i< 5; i++){
+            if(suits[i] == 5) samesuit = true
+        }
+        return samesuit;
+    }
+
+    private boolean FourofAKind(){
+        for(int i = 1; i<14; i++) {
+            if (ranks[i] == 4) return true;
+        }
+        return false;
+    }
+
+    private boolean fullHouse(){
+        boolean pairoftwo = false;
+        boolean pairofthree = true;
+        for(int i = 1; i < 14; i++){
+            if(ranks[i] == 2) pairoftwo = true;
+            if(ranks[i] == 3) pairofthree = true;
+        }
+        return pairoftwo && pairofthree;
+    }
+
+    private boolean straight() {
+        return (hand[1].getValue() == hand[2].getValue() + 1 && hand[1].getValue() == hand[3].getValue() + 2
+                && hand[1].getValue() == hand[4].getValue() + 4 && hand[1].getValue() == hand[5].getValue() + 4) ||
+                (ranks[1] == 1 && // Ace
+                        ranks[10] == 1 && // Ten
+                        ranks[11] == 1 && // Jack
+                        ranks[12] == 1 && // Queen
+                        ranks[13] == 1); // King};
+    }
+    private boolean threeOfAKind() {
+        for (int i = 1; i < 5; i++) {
+            if (suits[i] == 3) return true;
+        }
+        return false;
+    }
+
+
+    private boolean twoPair() {
+        int paircount = 0;
+        for(int i=1; i<14; i++){
+            if(ranks[i] == 2) paircount++;
+        }
+        return paircount == 2;
+    }
+
+
+    private boolean pair() {
+        for(int i = 1; i< 14; 1++){
+            if(ranks[i] == 2) return true;
+        }
+
+    }
 
     public static void main(String[] args) {
         Hand testhand = new Hand();
