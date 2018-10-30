@@ -90,7 +90,7 @@ public class Hand {
     private boolean flush(){
         boolean samesuit = false;
         for(int i = 1; i< 5; i++){
-            if(suits[i] == 5) samesuit = true
+            if(suits[i] == 5) samesuit = true;
         }
         return samesuit;
     }
@@ -139,10 +139,10 @@ public class Hand {
 
 
     private boolean pair() {
-        for(int i = 1; i< 14; 1++){
+        for(int i = 1; i< 14; i++){
             if(ranks[i] == 2) return true;
         }
-
+        return false;
     }
 
     public static void main(String[] args) {
