@@ -12,6 +12,8 @@ public class Player {
         input = new Scanner(System.in);
         bankroll = new Bankroll();
         pokergame = new PokerGame();
+        bet = new Bet();
+        hand = new Hand();
     }
 
 
@@ -74,7 +76,7 @@ public class Player {
         System.out.println("Hold or discard? ");
         for (int i = 0; i < 5; i++) {
             do {
-                System.out.print("Hold (h) or Discard (d) card number " (I 1)": ");
+                System.out.print("Hold (h) or Discard (d) card number " +(i + 1)+": ");
                 ans = input.next();
                 if (ans.equals("h"))
                     x[i] = true; // hold
@@ -91,21 +93,21 @@ public class Player {
         String nameOfHand = "Lose";
         if (payout == 250)
         nameOfHand = "Royal Flush";
-        else if (payout = 50)
+        else if (payout == 50)
         nameOfHand = "Straight Flush";
-        else if (payout = 25)
+        else if (payout == 25)
         nameOfHand = "Four of a Kind";
-        else if (payout = 9)
+        else if (payout == 9)
         nameOfHand = "Full House";
-        else if (payout = 6)
+        else if (payout == 6)
         nameOfHand = " Flush";
-        else if (payout = 4)
+        else if (payout == 4)
         nameOfHand = "Straight ";
-        else if (payout = 3)
+        else if (payout == 3)
         nameOfHand = "Three of a Kind";
-        else if (payout = 2)
+        else if (payout == 2)
         nameOfHand = "Two Pair";
-        else if (payout  1)
+        else if (payout == 1)
         nameOfHand = " Pair of Jacks or Better";
         if (winnings > 0 )
         {

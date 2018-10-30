@@ -2,15 +2,20 @@ public class PokerGame {
     private Bet bet;
     private Player player;
     private Bankroll bankroll;
-    private boolean[] cards;
+    private boolean[] holdcards;
     private Hand hand;
+
+    public PokerGame(){
+        hand = new Hand();
+        holdcards = new boolean[5];
+    }
 
     public PokerGame(Bet coins, Bankroll br, Player someperson){
         bet = coins;
         bankroll = br;
         player = someperson;
         hand = new Hand();
-        cards = new boolean[5];
+        holdcards = new boolean[5];
     }
 
     public int updateBankroll(int payout){
@@ -25,8 +30,8 @@ public class PokerGame {
     }
 
     public void discardOrHoldCards(){
-        player.getDiscard(holdCards); // ask player for the discard list
-        hand.updateHand(holdCards); // passes discards to hand and hand updates itself
+        player.getDiscard(holdcards); // ask player for the discard list
+        hand.updateHand(holdcards); // passes discards to hand and hand updates itself
         player.displayHand(hand.getHand()); // tell player to show the (revised) hand
         int payout = hand.evaluateHand(); // tell hand to evaluate itself and return the payout
         int winnings = updateBankroll(payout); // update the bankroll, a PokerGame method

@@ -61,6 +61,32 @@ public class Hand {
         }
     }
 
+    public int evaluateHand()
+    {if (royalFlush()) // royal flush pays 250:1
+        return 250;
+    else if (straightflush()) // straight flush pays 50:1
+        return 50;
+    else if (fourOfAKind()) // four of a kind
+        return 25; // four of a kind pays 25:1
+    else if (fullHouse()) // full house
+        return 9;
+    else if (flush())
+        return 6;
+    else if (straight())
+        return 4;
+    else if (threeOfAKind()) // three of a kind
+        return 3;
+    else if (twoPair())
+        return 2;
+    else if (pair()) // Jacks or better
+        return 1;
+        return - 1; // losing hand
+    }
+
+
+
+
+
     private boolean royalFlush() {
         boolean samesuit = false;
         boolean streetfromace = false;
@@ -95,7 +121,7 @@ public class Hand {
         return samesuit;
     }
 
-    private boolean FourofAKind(){
+    private boolean fourOfAKind(){
         for(int i = 1; i<14; i++) {
             if (ranks[i] == 4) return true;
         }
